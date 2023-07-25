@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Frequently Asked Questions</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <div class="nav-bar">
+    <ul class="nav">
+      <li class="nav-item"><a  href="/">Home</a></li>
+      <li class="nav-item"><a class="active" href="/posts/">Posts</a></li>
+      <li class="nav-item" style="float:right"><a  href="/admin/">Admin</a></li>
+    </ul>
+  </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Center Content: Latest Article -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2>{{ latest_article.title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ latest_article.content|safe }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- Sidebar: Articles Per Category -->
+                {% for category in article_categories %}
+                {% with category_articles=category.article_set.all %}
+                {% if category_articles %}
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>{{ category.name }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for article in category_articles %}
+                            <li class="list-group-item">
+                                <a href="{% url 'view_articles_with_slug' article.slug %}">{{ article.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'jodit.css' %}">
+    <script src="{% static 'jodit.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var editor = new Jodit('#id_content');
+        });
+    </script>
+{% endblock %}

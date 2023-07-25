@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Frequently Asked Questions</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <div class="nav-bar">
+    <ul class="nav">
+      <li class="nav-item"><a class="active" href="/">Home</a></li>
+      <li class="nav-item"><a  href="/posts/">Posts</a></li>
+      <li class="nav-item" style="float:right"><a  href="/admin/">Admin</a></li>
+    </ul>
+  </div>
+  <div class="container mt-4">
+
+        <h1>{{ faq.question }}</h1>
+        <div class="content" id="ss-{{ faq.id }}">
+          <p>{{ faq.answer }}</p>
+        </div>
+        
+  </div>
+
+  <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

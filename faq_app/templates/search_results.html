@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <div class="nav-bar">
+    <ul class="nav">
+      <li class="nav-item"><a class="active" href="/">Home</a></li>
+      <li class="nav-item"><a href="/posts/">Posts</a></li>
+      <li class="nav-item" style="float:right"><a href="/admin/">Admin</a></li>
+    </ul>
+  </div>
+  <div class="container mt-4">
+
+    <form method="GET" action="{% url 'search' %}">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search articles and FAQs...">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+    <br>
+    <h1>Search Results</h1>
+
+    {% if articles %}
+    {% for article in articles %}
+    <div class="results">
+      <h3><a href="{% url 'view_articles_with_slug' article_slug=article.slug %}">{{ article.title }}</a></h3>
+
+      <p>{{ article.content|safe|striptags|slice:":100" }}</p>
+      {% if article.content|striptags|length > 100 %}
+      <p><a href="{% url 'view_articles_with_slug' article_slug=article.slug %}">Read more...</a></p>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p></p>
+    {% endif %}
+
+    {% if faqs %}
+    <h2>FAQs:</h2>
+    {% for faq in faqs %}
+    <div class="accordion">
+      <h2 class="accordion-toggle" data-target="ss-{{ faq.id }}">{{ faq.question }}</h2>
+      <div class="accordion-content" id="ss-{{ faq.id }}">
+        <h3>{{ faq.question }}</h3>
+
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    {% endif %}
+
+    {% if not faqs and not articles %}
+    <p>No results found</p>
+    {% endif %}
+  </div>
+
+
+
+  <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

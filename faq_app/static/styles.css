@@ -1,0 +1,179 @@
+
+body, h1, h2, h3, p, ol, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+ 
+  
+  .accordion-toggle {
+    cursor: pointer;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .accordion-content {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .accordion-toggle.active {
+    background-color: #ccc;
+  }
+  
+  h1, h2, h3 {
+    color: #555;
+  }
+  
+  a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  ul, ol {
+    margin: 10px 0;
+  }
+  
+  p {
+    margin: 10px 0;
+    
+  font-family: Arial;
+  }
+  
+  code {
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  }
+  /* Navbar */
+  .nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .nav-item {
+    float: left;
+    /* border-right:1px solid #bbb; */
+  }
+  
+  .nav-item:last-child {
+    border-right: none;
+  }
+  
+  .nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .nav-item a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #0497aa;
+  }
+
+/* Custom styles for the container and rows */
+.contain {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+/* Custom styles for columns within a row */
+.col-md-8,
+.col-md-4 {
+  padding: 0 15px;
+}
+
+/* Custom styles for the sidebar */
+.col-md-4 {
+  margin-top: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+/* Custom styles for the center content (latest article) */
+.col-md-8 {
+  margin-top: 20px;
+}
+
+.card-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+/* CSS for the results card */
+.results {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #fff;
+}
+
+/* Optional: Adding some spacing between cards */
+.results + .results {
+  margin-top: 16px;
+}
